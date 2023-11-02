@@ -7,7 +7,6 @@ const Product = require('./models/Product');
 const User = require('./models/User');
 const app = express();
 
-// Connect to MongoDB
 mongoose.connect('mongodb://your-mongodb-uri', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -15,7 +14,6 @@ mongoose.connect('mongodb://your-mongodb-uri', {
 
 app.set('view engine', 'ejs');
 
-// Middleware setup
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
@@ -27,12 +25,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Configure passport for user authentication (you need to implement this part)
 
-// Define routes
 app.use('/', require('./routes/index'));
 
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
